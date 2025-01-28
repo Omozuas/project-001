@@ -122,9 +122,9 @@ class VideoController{
         const { id } = req.user;
         try {
             // Destructure user ID and product (video) ID from the request body
-            const { productId } = req.body;
+            const { productId } = req.body.productId;
     
-            if (!userId || !productId) {
+            if (!id || !productId) {
                
                 res.status(404);
                 throw new Error('User ID and Product ID are required')
@@ -141,7 +141,7 @@ class VideoController{
             }
     
             // Check if the user has already liked the video
-            const isAlreadyLiked = video.isLikes.includes(userId);
+            const isAlreadyLiked = video.isLikes.includes(id);
     
             let updatedVideo;
     
