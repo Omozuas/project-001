@@ -9,6 +9,7 @@ const dbConnect =require('./config/dbConnect');
 const Router=require('./routes/index');
 const authRoter=require('./routes/authRoutes');
 const VideoRoter=require('./routes/videoRoutes');
+const cron = require("node-cron");
 dbConnect();
 const passport = require('passport');
 
@@ -41,6 +42,17 @@ app.use(passport.session());
 app.use(Router);
 app.use('/api/auth',authRoter);
 app.use('/api/video',VideoRoter);
+cron.schedule("*/3 * * * * ", async () => {
+    try {
+      const currentTime = new Date();
+      console.log(`Current time: ${currentTime}`);
+      
+      const response = await axios.get('https://project-001-1.onrender.com/');
+      console.log('API Response:', response.data);
+    } catch (error) {
+      console.error('Error fetching API:', error);
+    }
+  });
 
 //start server
 app.listen(process.env.PORT ,()=>{
