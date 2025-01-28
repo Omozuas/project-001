@@ -122,7 +122,7 @@ class VideoController{
         const { id } = req.user;
         try {
             // Destructure user ID and product (video) ID from the request body
-            const { productId } = req.body.productId;
+            const  productId  = req.body.productId;
     
             if (!id || !productId) {
                
