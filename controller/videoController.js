@@ -37,13 +37,7 @@ class VideoController{
             
         // Count total number of documents
         const totalVideos = await Game.countDocuments();
-            if(code){
-                randomResturent=await Game.aggregate([
-                    { $sample: { size: totalVideos } }, 
-                    {$project:{__v:0}}
-                ]);
-
-            }
+           
             if(randomResturent.length==0){
                 randomResturent=await Game.aggregate([
                    
@@ -60,17 +54,9 @@ class VideoController{
        
         try {
             let randomResturent=[]; 
-            
-            if(code){
-                randomResturent=await Game.aggregate([
-                    { $sample: { size: 6 } }, 
-                    {$project:{__v:0}}
-                ]);
-
-            }
+         
             if(randomResturent.length==0){
                 randomResturent=await Game.aggregate([
-                   
                     { $sample: { size: 6 } }, 
                     {$project:{__v:0}}
                 ]);
