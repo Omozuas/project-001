@@ -10,6 +10,7 @@ const Router=require('./routes/index');
 const authRoter=require('./routes/authRoutes');
 const VideoRoter=require('./routes/videoRoutes');
 const cron = require("node-cron");
+const axios=require('axios');
 dbConnect();
 const passport = require('passport');
 
@@ -47,7 +48,7 @@ cron.schedule("*/3 * * * * ", async () => {
       const currentTime = new Date();
       console.log(`Current time: ${currentTime}`);
       
-      const response = await axios.get('https://project-001-1.onrender.com/');
+      const response = await axios.get('https://project-001-1.onrender.com/home');
       console.log('API Response:', response.data);
     } catch (error) {
       console.error('Error fetching API:', error);
