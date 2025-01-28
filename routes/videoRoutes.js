@@ -6,10 +6,13 @@ const checkerHandler=require('../middlewares/checker');
 
 
 Route.post('/create',authRoter.createVideo);
+Route.post('/create-game',authRoter.createGame);
 
 
 Route.get('/',authRoter.getVideo);
-Route.put('/likevideo',authRoter.likeVideo);
+Route.get('/ramdom-game',authRoter.getRandomGame);
+Route.get('/ramdom2',authRoter.getRandomGame2);
+Route.put('/likevideo',checkerHandler.authmiddleware,authRoter.likeVideo);
 
 
 

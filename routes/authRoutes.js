@@ -2,12 +2,15 @@ const express = require('express');
 const passport = require('passport');
 const Route=express.Router();
 const authRoter=require('../controller/authController')
+const authRoter2=require('../controller/seconAuthc')
 const errorHandler=require('../middlewares/errorhandler');
 const checkerHandler=require('../middlewares/checker');
 const { upload } = require('../middlewares/multer');
 
 Route.post('/signup',authRoter.createUser);
 Route.post('/login',authRoter.loginUser);
+Route.post('/signup2',authRoter2.createUser);
+Route.post('/login2',authRoter2.loginUser);
 Route.post('/logout',checkerHandler.authmiddleware,authRoter.logout);
 Route.post('/forgot-password-token',authRoter.forgotPassword);
 Route.post('/reset-password',authRoter.resetPassword);

@@ -1,5 +1,6 @@
 const asynchandler=require('express-async-handler');
 const Video=require('../models/video_model');
+const Game=require('../models/game_model');
 class VideoController{
     static createVideo = asynchandler(async (req,res)=>{
         const newVideo=new Video({
@@ -16,6 +17,68 @@ class VideoController{
            await newVideo.save();
            return res.status(200).json({newVideo,message:' successful',success:true});
       
+    });
+
+    static createGame = asynchandler(async (req,res)=>{
+        const newVideo=new Game({
+            gameUrl:req.body.gameUrl,
+            gameName:req.body.gameName,
+            
+            });
+           await newVideo.save();
+           return res.status(200).json({newVideo,message:' successful',success:true});
+      
+    });
+
+    static getRandomGame =asynchandler(async (req, res) => {
+       
+        try {
+            let randomResturent=[]; 
+            
+        // Count total number of documents
+        const totalVideos = await Game.countDocuments();
+            if(code){
+                randomResturent=await Game.aggregate([
+                    { $sample: { size: totalVideos } }, 
+                    {$project:{__v:0}}
+                ]);
+
+            }
+            if(randomResturent.length==0){
+                randomResturent=await Game.aggregate([
+                   
+                    { $sample: { size: totalVideos } }, 
+                    {$project:{__v:0}}
+                ]);
+            }
+            res.status(200).json({success:true,randomResturent})
+        } catch (error) {
+            throw new Error(`${error.message}`);
+        }
+    });
+    static getRandomGame2 =asynchandler(async (req, res) => {
+       
+        try {
+            let randomResturent=[]; 
+            
+            if(code){
+                randomResturent=await Game.aggregate([
+                    { $sample: { size: 6 } }, 
+                    {$project:{__v:0}}
+                ]);
+
+            }
+            if(randomResturent.length==0){
+                randomResturent=await Game.aggregate([
+                   
+                    { $sample: { size: 6 } }, 
+                    {$project:{__v:0}}
+                ]);
+            }
+            res.status(200).json({success:true,randomResturent})
+        } catch (error) {
+            throw new Error(`${error.message}`);
+        }
     });
 
     static getVideo = asynchandler(async (req,res)=>{
