@@ -19,7 +19,7 @@ class AuthController2{
          password:hashedPassword,
         });
       await newUser.save();
-      return res.status(200).json({newUser,message:'SigUp successful',success:true});
+      return res.status(200).json({data,message:'SigUp successful',success:true});
  
      });
   
