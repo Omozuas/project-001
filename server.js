@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const dbConnect =require('./config/dbConnect');
 const Router=require('./routes/index');
 const authRoter=require('./routes/authRoutes');
+const VideoRoter=require('./routes/videoRoutes');
 dbConnect();
 const passport = require('passport');
 
@@ -39,6 +40,7 @@ app.use(passport.session());
 
 app.use(Router);
 app.use('/api/auth',authRoter);
+app.use('/api/video',VideoRoter);
 
 //start server
 app.listen(process.env.PORT ,()=>{
