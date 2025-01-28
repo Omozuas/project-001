@@ -14,11 +14,11 @@ class AuthController2{
            //  return res.status(400).json({ message:'Email is already taken by another user',success:false});
         }
       const hashedPassword = await bcrypt.hash(req.body.password,10);
-        const newUser=new User({
+        const data=new User({
          name:req.body.name,
          password:hashedPassword,
         });
-      await newUser.save();
+      await data.save();
       return res.status(200).json({data,message:'SigUp successful',success:true});
  
      });
