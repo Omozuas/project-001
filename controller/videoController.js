@@ -170,7 +170,7 @@ class VideoController{
             // Send a successful response
             res.status(200).json({
                 success: true,
-                video: updatedVideo,
+                data: updatedVideo,
             });
            
           } catch (error) {
