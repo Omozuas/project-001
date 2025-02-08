@@ -48,7 +48,7 @@ cron.schedule("*/3 * * * * ", async () => {
       const currentTime = new Date();
       console.log(`Current time: ${currentTime}`);
       
-      const response = await axios.get('https://project-001-1.onrender.com/home');
+      const response = await axios.get('https://project-001-nc0y.onrender.com/home');
       console.log('API Response:', response.data);
     } catch (error) {
       console.error('Error fetching API:', error);
