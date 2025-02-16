@@ -26,7 +26,7 @@ class VideoController{
             
             });
            await newVideo.save();
-           return res.status(200).json({newVideo,message:' successful',success:true});
+           return res.status(200).json({newVideo,message:'successful',success:true});
       
     });
 
@@ -45,7 +45,7 @@ class VideoController{
                     {$project:{__v:0}}
                 ]);
             }
-            res.status(200).json({success:true,randomResturent})
+            res.status(200).json({success:true,randomResturent,message:'success'})
         } catch (error) {
             throw new Error(`${error.message}`);
         }
@@ -61,7 +61,7 @@ class VideoController{
                     {$project:{__v:0}}
                 ]);
             }
-            res.status(200).json({success:true,randomResturent})
+            res.status(200).json({success:true,randomResturent,message:'success'})
         } catch (error) {
             throw new Error(`${error.message}`);
         }
@@ -98,6 +98,7 @@ class VideoController{
         return res.status(200).json({
             success: true,
             data: videos,
+            message:'success'
         });
         } catch (error) {
             throw new Error(error);
@@ -157,6 +158,7 @@ class VideoController{
             res.status(200).json({
                 success: true,
                 data: updatedVideo,
+                message:'success'
             });
            
           } catch (error) {
